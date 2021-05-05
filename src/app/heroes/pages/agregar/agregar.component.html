@@ -1,3 +1,91 @@
-<p>hello {{heroe}}</p>
 
-<a [routerLink]="['/heroes/editar', 'dc-flash']">DC Flash</a>
+
+<mat-card class="add-container">
+    <mat-card-header>
+        <mat-card-title>
+          {{title}}
+        </mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+        <!-- Form Container  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="3rem">
+        
+            <!-- div Form Elements  -->
+            <div fxFlex="50">
+                <div fxLayout="column">
+                    <!-- div Heroe y Superheroe -->
+                    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="1rem">
+                        <mat-form-field fxFlex="100">
+                            <mat-label>Super Héroe</mat-label>
+                            <input matInput 
+                                   type="text"
+                                   [(ngModel)] = "heroe.superhero"
+                                   required>
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex="100">
+                            <mat-label>Alter Ego</mat-label>
+                            <input matInput 
+                                   type="text" 
+                                   [(ngModel)] = "heroe.alter_ego"
+                                   required>
+                        </mat-form-field>
+                    </div>
+                    <!-- Fin Heroe y Superheroe -->
+        
+                    <mat-form-field fxFlex="100">
+                        <mat-label>Primera Aparición</mat-label>
+                        <input matInput 
+                               type="text" 
+                               [(ngModel)] = "heroe.first_appearance"
+                               required>
+                    </mat-form-field>
+        
+                    <mat-form-field fxFlex="100">
+                        <mat-label>Personajes</mat-label>
+                        <input matInput 
+                               type="text" 
+                               [(ngModel)] = "heroe.characters"
+                               required>
+                    </mat-form-field>
+        
+                    <mat-form-field fxFlex="100">
+                        <mat-label>Creador</mat-label>
+                        <mat-select [(ngModel)]="heroe.publisher" required>
+                            <mat-option *ngFor="let pub of publishers | keyvalue" [value]="pub.value">
+                                {{pub.value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+        
+                    <mat-form-field fxFlex="100">
+                        <mat-label>Foto Url</mat-label>
+                        <input matInput 
+                               type="url" 
+                               [(ngModel)] = "heroe.alt_img"
+                               required>
+                    </mat-form-field>
+                </div>
+        
+            </div>
+        
+            <!-- div Image Container  -->
+            <div fxFlex="50">
+                <img [src]="heroe | image" />
+            </div>
+        
+        </div>
+    </mat-card-content>
+    
+    <mat-card-actions>
+        <button mat-flat-button color="primary" (click)=guardar()>
+            <mat-icon>save</mat-icon>
+            Guardar
+        </button>
+    </mat-card-actions>
+</mat-card>
+
+
+
+
