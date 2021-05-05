@@ -3,7 +3,7 @@
 <mat-card class="add-container">
     <mat-card-header>
         <mat-card-title>
-          {{title}}
+          {{ (heroe.id) ? 'Editar' : 'Nuevo'}} Héroe <span>{{heroe.superhero}}</span>
         </mat-card-title>
     </mat-card-header>
     
@@ -79,9 +79,13 @@
     </mat-card-content>
     
     <mat-card-actions>
-        <button mat-flat-button color="primary" (click)=guardar()>
-            <mat-icon>save</mat-icon>
-            Guardar
+        <button mat-raised-button color="primary" (click)=guardar()>
+            <mat-icon>edit</mat-icon>
+            {{ (heroe.id) ? 'Actualizar' : 'Crear'}}
+        </button>
+        <button mat-raised-button color="warn" (click)=eliminar() *ngIf="heroe.id" >
+            <mat-icon>remove</mat-icon>
+            Eliminar
         </button>
     </mat-card-actions>
 </mat-card>

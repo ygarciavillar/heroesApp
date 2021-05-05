@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from "@angular/core";
 import { Heroe } from "../interfaces/heroe.interface";
 
 @Pipe({
-    name: 'image'
+    name: 'image',
+    pure: false
 })
 export class ImagenPipe implements PipeTransform {
     
