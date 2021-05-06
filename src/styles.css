@@ -17,4 +17,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex: 1 1 auto ;
 }
 
-
+.hero-image{
+    max-width: 100%;
+    display: block;
+}
